@@ -144,29 +144,37 @@ h1 {
   animation: fadeOut 0.3s ease forwards;
 }
 @media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
   .container {
-    padding: 16px;
-    border-radius: 12px;
+    width: 100%;
+    padding: 0 10px;
   }
-  h1 {
-    font-size: 22px;
-  }
-  .input-section {
+
+  .task-items {
     flex-direction: column;
-  }
-  #add-btn {
     width: 100%;
   }
+
   .task-item {
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px;
+    width: 100%;
+    gap: 10px;
   }
+
   .actions {
-    margin-top: 8px;
-    gap: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
+
   .task-name {
-    font-size: 15px;
+    font-size: 1rem;
+    word-break: break-word;
+    width: 100%;
   }
 }
+
