@@ -1,36 +1,40 @@
-/* Reset and base styles */
+/* GLOBAL RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BASE STYLES */
 body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: radial-gradient(ellipse at center, hsl(200, 100%, 9%) 0%, hsl(0, 0%, 0%) 100%);
-  color: hsl(0, 0%, 100%);
-  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #001f2f 0%, #000000 100%);
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 20px;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
 .container {
+  background-color: #0f2c44;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 500px;
-  background-color: hsl(0, 0%, 7%);
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px hsla(180, 100%, 50%, 0.15);
 }
 
+/* HEADER */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
+  margin-bottom: 16px;
+  font-size: 2rem;
 }
 
+/* INPUT & BUTTONS */
 .input-section {
   display: flex;
   gap: 10px;
@@ -39,113 +43,93 @@ h1 {
 
 #task-input {
   flex: 1;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 10px 14px;
   border: none;
-  outline: none;
-  font-size: 16px;
-  background: hsl(0, 0%, 13%);
-  color: hsl(0, 0%, 100%);
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 #add-btn {
   padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: hsl(187, 100%, 42%);
+  background-color: #16a085;
   color: white;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.2s ease;
 }
 
 #add-btn:hover {
-  background-color: hsl(186, 100%, 33%);
+  background-color: #138d75;
 }
 
+/* TASK LIST */
 .task-items {
   display: flex;
   flex-direction: column;
   gap: 12px;
-
-  /* Optional: for debugging visibility on mobile */
-  /* border: 2px dashed lime; */
-  /* background: rgba(0, 255, 0, 0.05); */
 }
 
+/* TASK ITEM */
 .task-item {
+  background-color: #123954;
+  border-radius: 8px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: hsl(0, 0%, 12%);
-  padding: 12px 14px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  animation: fadeIn 0.3s ease forwards;
-
-  /* Optional: for debugging visibility */
-  /* border: 1px solid red; */
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .task-item.completed .task-name {
   text-decoration: line-through;
-  color: hsl(0, 0%, 53%);
+  opacity: 0.6;
 }
 
+/* TASK NAME */
 .task-name {
-  font-size: 16px;
-  flex: 1;
+  font-size: 1.1rem;
   word-break: break-word;
+  flex: 1;
 }
 
+/* ACTION BUTTONS */
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  margin-left: 10px;
 }
 
-.check-btn,
-.delete-btn,
-.edit-btn {
-  background-color: transparent;
+.actions button {
+  background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  color: hsl(187, 100%, 42%);
-  transition: transform 0.2s ease, color 0.2s ease;
-  padding: 4px 8px;
-  border-radius: 6px;
+  font-size: 1rem;
+  color: white;
 }
 
-.check-btn:hover {
-  color: hsl(122, 39%, 49%);
-  transform: scale(1.1);
+.delete-btn {
+  color: #e74c3c;
 }
 
-.delete-btn:hover {
-  color: hsl(4, 90%, 58%);
-  transform: scale(1.1);
+.check-btn {
+  color: #2ecc71;
 }
 
 .edit-btn {
-  color: hsl(45, 100%, 51%);
+  color: #f1c40f;
 }
 
-.edit-btn:hover {
-  background-color: hsl(45, 100%, 44%);
-  color: hsl(0, 0%, 0%);
-  transform: scale(1.1);
-}
-
+/* EDIT INPUT */
 .edit-input {
-  flex: 1;
-  padding: 6px;
+  padding: 8px 10px;
   font-size: 1rem;
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 4px;
-  background: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 0%);
+  border: none;
+  border-radius: 6px;
+  width: 100%;
 }
 
+/* ANIMATION */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -157,38 +141,27 @@ h1 {
   }
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-.fade-out {
-  animation: fadeOut 0.3s ease forwards;
-}
-
-/* ========== MOBILE FIXES ========== */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   body {
-    padding: 10px;
+    padding: 12px;
+    overflow-y: auto;
   }
 
   .container {
+    padding: 16px;
     width: 100%;
-    padding: 0 10px;
+  }
+
+  .input-section {
+    flex-direction: column;
   }
 
   .task-items {
     width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
   }
 
   .task-item {
@@ -201,20 +174,13 @@ h1 {
   .task-name {
     width: 100%;
     font-size: 1rem;
+    word-break: break-word;
   }
 
   .actions {
     width: 100%;
-    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 12px;
-  }
-
-  .check-btn,
-  .edit-btn,
-  .delete-btn {
-    font-size: 18px;
-    padding: 6px 10px;
+    gap: 10px;
   }
 }
