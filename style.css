@@ -67,6 +67,10 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  /* Optional: for debugging visibility on mobile */
+  /* border: 2px dashed lime; */
+  /* background: rgba(0, 255, 0, 0.05); */
 }
 
 .task-item {
@@ -78,6 +82,9 @@ h1 {
   border-radius: 8px;
   transition: all 0.3s ease;
   animation: fadeIn 0.3s ease forwards;
+
+  /* Optional: for debugging visibility */
+  /* border: 1px solid red; */
 }
 
 .task-item.completed .task-name {
@@ -152,4 +159,62 @@ h1 {
 
 .fade-in {
   animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* ========== MOBILE FIXES ========== */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .task-items {
+    width: 100%;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .task-name {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .check-btn,
+  .edit-btn,
+  .delete-btn {
+    font-size: 18px;
+    padding: 6px 10px;
+  }
 }
